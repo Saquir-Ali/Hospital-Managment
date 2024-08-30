@@ -72,7 +72,6 @@ const Dashboard = () => {
         <div className="col-span-3 bg-white p-6 rounded-lg shadow mt-6">
           <h4 className="text-xl font-bold mb-4">Top Medicines Sold</h4>
           <div className=' text-sm'>
-          
           <DemographicsChart />
           </div>
           <div className="mt-6">
