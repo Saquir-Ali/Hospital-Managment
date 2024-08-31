@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const SideBar = () => {
     return (
         <aside className="w-64 bg-white border-r">
@@ -13,9 +13,9 @@ const SideBar = () => {
                 <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100">
                     Patients
                 </a>
-                <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100">
+                <Link to='/Appointments' className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100">
                     Appointments
-                </a>
+                </Link>
                 <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100">
                     Doctors
                 </a>

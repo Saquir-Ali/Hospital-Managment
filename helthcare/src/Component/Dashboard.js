@@ -3,18 +3,6 @@ import DemographicsChart from './DemographicsChart'
 
 const Dashboard = () => {
   return (
-    <main className="flex-1 p-6">
-      <header className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold">Dashboard</h2>
-        <div className="flex items-center space-x-4">
-          <span className="font-semibold">Jonitha Cathrine (Admin)</span>
-          <div className="relative">
-            <span className="w-3.5 h-3.5 bg-red-500 rounded-full absolute top-0 right-0"></span>
-            <img src="/path/to/avatar.jpg" alt="Avatar" className="w-10 h-10 rounded-full" />
-          </div>
-        </div>
-      </header>
-
       <section className="grid grid-cols-4 gap-6">
         <div className="col-span-3 bg-white p-6 rounded-lg shadow">
           <div className="grid grid-cols-3 gap-6">
@@ -89,7 +77,6 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-    </main>
   )
 }
 
