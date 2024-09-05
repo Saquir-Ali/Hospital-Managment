@@ -1,51 +1,47 @@
-import React, { useEffect } from 'react';
-// import { Chart, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
-
-// // Registering the necessary components
-// Chart.register(
-//     DoughnutController,
-//     ArcElement,
-//     Tooltip,
-//     Legend
-//   );
-
-import { Chart, DoughnutController, LineController, BarController, ArcElement, LineElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-
-Chart.register(
-  DoughnutController,
-  LineController,
-  BarController,
-  ArcElement,
-  LineElement,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend
-);
-
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
 const DemographicsChart = () => {
+  const chartRef = useRef(null);
+  const myChartRef = useRef(null);
+
   useEffect(() => {
-    const ctx = document.getElementById('demographicsChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'doughnut',
+    const ctx = chartRef.current.getContext("2d");
+
+    // Destroy the chart if it already exists
+    if (myChartRef.current) {
+      myChartRef.current.destroy();
+    }
+
+    // Create a new chart
+    myChartRef.current = new Chart(ctx, {
+      type: "doughnut",
       data: {
-        labels: ['Male', 'Female', 'Other'],
-        datasets: [{
-          label: 'Patients',
-          data: [60, 35, 5],
-          backgroundColor: ['#3b82f6', '#fbbf24', '#ef4444']
-        }]
+        labels: ["Paracetamol", "Vitamin Tablets", "Antacid Tablets", "Others"],
+        datasets: [
+          {
+            label: "Top Medicines Sold",
+            data: [40, 30, 20, 10], // Replace with your actual data
+            backgroundColor: ["#4F46E5", "#10B981", "#F59E0B", "#6B7280"],
+            hoverBackgroundColor: ["#6366F1", "#34D399", "#FBBF24", "#9CA3AF"],
+          },
+        ],
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
-      }
+        maintainAspectRatio: false,
+      },
     });
+
+    // Clean up the chart on component unmount
+    return () => {
+      if (myChartRef.current) {
+        myChartRef.current.destroy();
+      }
+    };
   }, []);
 
-  return <canvas id="demographicsChart"></canvas>;
-}
+  return <canvas id="demographicsChart" ref={chartRef} />;
+};
 
 export default DemographicsChart;
