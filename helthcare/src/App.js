@@ -7,6 +7,7 @@ import Header from "./Component/Header";
 import NewAppointments from "./Component/NewAppointments";
 import CompletedAppointments from "./Component/CompletedAppointments";
 import Patients from "./Component/Patients"; // Import the Patients component
+import MedicinalInventory from "./Component/MedicinalInventory";
 
 const BodyStructure = () => (
   <>
@@ -49,7 +50,10 @@ const appRouter = createBrowserRouter([
         path: "/Patients",
         element: <Patients />,
       },
-      {},
+      {
+        path:"/medicine-inventory",
+        element:<MedicinalInventory/>
+      },
     ],
   },
 ]);

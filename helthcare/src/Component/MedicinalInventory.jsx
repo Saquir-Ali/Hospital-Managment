@@ -1,12 +1,11 @@
-import React from 'react'
-import { useState } from 'react';
-import ProductItem from './inventory/ProductItem'
-import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
-import SearchPanel from './inventory/SearchPanel';
-
+import React, { useState } from 'react';
+import { Checkbox, IconButton, TextField } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '@mui/icons-material/Search';
 
 function MedicinalInventory() {
-  const [items,setItems] = useState([
+  const [items, setItems] = useState([
     {
       "name": "Salbutamol Inhaler",
       "code": "ALSXCE00123",
@@ -71,103 +70,169 @@ function MedicinalInventory() {
       "manufacturer": "Kumar & Sons Healthcare"
     },
     {
-      name: "Ibuprofen 400 mg",
-      code: "IBUXIN003",
-      type: "Tablet",
-      price: "₹ 20.00",
-      piecesCount: 150,
-      date: "01 Jan 2024",
-      manufacturer: "Himalayan BioTech"
+      "name": "Ibuprofen 400 mg",
+      "code": "IBUXIN003",
+      "type": "Tablet",
+      "price": "₹ 20.00",
+      "piecesCount": 150,
+      "date": "01 Jan 2024",
+      "manufacturer": "Himalayan BioTech"
     },
     {
-      name: "ORS Sachet",
-      code: "ORSXIN004",
-      type: "Sachet",
-      price: "₹ 12.00",
-      piecesCount: 200,
-      date: "15 Nov 2024",
-      manufacturer: "AyurCare Ltd"
+      "name": "ORS Sachet",
+      "code": "ORSXIN004",
+      "type": "Sachet",
+      "price": "₹ 12.00",
+      "piecesCount": 200,
+      "date": "15 Nov 2024",
+      "manufacturer": "AyurCare Ltd"
     },
     {
-      name: "Amoxicillin 500 mg",
-      code: "AMOXIN005",
-      type: "Capsule",
-      price: "₹ 45.30",
-      piecesCount: 50,
-      date: "30 Sep 2023",
-      manufacturer: "Veda Pharmaceuticals"
+      "name": "Amoxicillin 500 mg",
+      "code": "AMOXIN005",
+      "type": "Capsule",
+      "price": "₹ 45.30",
+      "piecesCount": 50,
+      "date": "30 Sep 2023",
+      "manufacturer": "Veda Pharmaceuticals"
     },
-    // {
-    //   name: "Cough Syrup 100 ml",
-    //   code: "COUXIN006",
-    //   type: "Syrup",
-    //   price: "₹ 60.50",
-    //   piecesCount: 90,
-    //   date: "28 Feb 2024",
-    //   manufacturer: "Kisan Medico Pvt Ltd"
-    // },
-    // {
-    //   name: "Cetirizine 10 mg",
-    //   code: "CETXIN007",
-    //   type: "Tablet",
-    //   price: "₹ 15.00",
-    //   piecesCount: 110,
-    //   date: "12 Oct 2023",
-    //   manufacturer: "Herbal Health Solutions"
-    // },
-    // {
-    //   name: "Vitamin D3 60000 IU",
-    //   code: "VD3XIN008",
-    //   type: "Tablet",
-    //   price: "₹ 75.00",
-    //   piecesCount: 65,
-    //   date: "05 Jul 2025",
-    //   manufacturer: "Shakti Pharma Pvt Ltd"
-    // }
-    
+    {
+      "name": "Cetirizine 10 mg",
+      "code": "CETXIN007",
+      "type": "Tablet",
+      "price": "₹ 15.00",
+      "piecesCount": 110,
+      "date": "12 Oct 2023",
+      "manufacturer": "Herbal Health Solutions"
+    },
+    {
+      "name": "Vitamin D3 60000 IU",
+      "code": "VD3XIN008",
+      "type": "Tablet",
+      "price": "₹ 75.00",
+      "piecesCount": 65,
+      "date": "05 Jul 2025",
+      "manufacturer": "Shakti Pharma Pvt Ltd"
+    },
+    {
+      "name": "Cough Syrup 100 ml",
+      "code": "COUXIN006",
+      "type": "Syrup",
+      "price": "₹ 60.50",
+      "piecesCount": 90,
+      "date": "28 Feb 2024",
+      "manufacturer": "Kisan Medico Pvt Ltd"
+    }
   ]);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedItems, setSelectedItems] = useState({});
+
+  const handleCheckboxChange = (code) => {
+    setSelectedItems(prevState => ({
+      ...prevState,
+      [code]: !prevState[code]
+    }));
+  };
+
+  const filteredItems = items.filter(item => 
+    item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.price.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.piecesCount.toString().includes(searchQuery) ||
+    item.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.manufacturer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className=' p-24 bg-blue-50'>
-       
-        <div className='flex justify-between bg-white p-8'>
-          <div className='self-end'>
-            <div className='text-lg text-[#302e2e] font-semibold'>MEDICINAL INVENTORY</div>
-            <div className='h-[3px] bg-blue-500 w-50 rounded'></div>
+    <div className='p-6 bg-blue-50 min-h-screen'>
+      <div className='bg-white p-6 shadow-md rounded-lg'>
+        <div className='flex flex-col mb-4'>
+          <div className='flex justify-between items-center mb-4'>
+            <div>
+              <h1 className='text-2xl font-semibold text-gray-800'>Medicinal Inventory</h1>
+              <div className='h-1 bg-blue-500 w-20 rounded mt-1'></div>
+            </div>
+            <div className='flex gap-3'>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-lg font-semibold flex items-center">
+                <span className='text-2xl'>+</span> Add Product
+              </button>
+            </div>
           </div>
-          
-            
-            
-          <div className='flex gap-3'>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded text-lg text-center">
-              <span className='text-2xl font-semibold'>+</span> Add Product</button>
-            <button><CloseFullscreenIcon style={{color:'#3b82f6'}}/></button>
+
+          <div className='mb-4'>
+            <TextField
+              id="search-bar"
+              label="Search Inventory"
+              variant="outlined"
+              fullWidth
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              InputProps={{
+                endAdornment: <SearchIcon />
+              }}
+            />
+          </div>
+
+          <div className='overflow-x-auto'>
+            <table className='min-w-full bg-white border border-gray-200'>
+              <thead>
+                <tr className='bg-gray-100'>
+                  <th className='p-2 border-b text-left'>
+                    <Checkbox
+                      checked={Object.keys(selectedItems).length === filteredItems.length && filteredItems.every(item => selectedItems[item.code])}
+                      onChange={() => {
+                        const allSelected = Object.keys(selectedItems).length === filteredItems.length && filteredItems.every(item => selectedItems[item.code]);
+                        setSelectedItems(filteredItems.reduce((acc, item) => ({
+                          ...acc,
+                          [item.code]: !allSelected
+                        }), {}));
+                      }}
+                    />
+                  </th>
+                  <th className='p-2 border-b text-left'>Name</th>
+                  <th className='p-2 border-b text-left'>Type</th>
+                  <th className='p-2 border-b text-left'>Price</th>
+                  <th className='p-2 border-b text-left'>In Stock</th>
+                  <th className='p-2 border-b text-left'>Expiry Date</th>
+                  <th className='p-2 border-b text-left'>Manufacturer</th>
+                  <th className='p-2 border-b text-left'>User Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredItems.map((item) => (
+                  <tr key={item.code}>
+                    <td className='p-2 border-b'>
+                      <Checkbox
+                        checked={!!selectedItems[item.code]}
+                        onChange={() => handleCheckboxChange(item.code)}
+                      />
+                    </td>
+                    <td className='p-2 border-b'>{item.name}</td>
+                    <td className='p-2 border-b'>{item.type}</td>
+                    <td className='p-2 border-b'>{item.price}</td>
+                    <td className='p-2 border-b'>{item.piecesCount}</td>
+                    <td className='p-2 border-b'>{item.date}</td>
+                    <td className='p-2 border-b'>{item.manufacturer}</td>
+                    <td className='p-2 border-b'>
+                      <div className='flex gap-2'>
+                        <IconButton aria-label="edit">
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton aria-label="delete">
+                          <DeleteIcon />
+                        </IconButton>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-        <hr/>
-
-        <div className='py-3 px-6 bg-white'>
-          <SearchPanel/>
-        </div>
-          
-        {items.map((item)=> (
-          <div key={item.code}>
-              <ProductItem 
-             
-             name={item.name}
-             code={item.code}
-             type={item.type}
-             price={item.price}
-             piecesCount={item.piecesCount}
-             date={item.date}
-             manufacturer={item.manufacturer}
-
-          />
-          <hr/>
-          </div>
-      ))}
+      </div>
     </div>
-    )
-    
+  );
 }
 
-export default MedicinalInventory
+export default MedicinalInventory;
