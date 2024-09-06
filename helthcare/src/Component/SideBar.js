@@ -53,7 +53,7 @@ const SideBar = () => {
           Messages
         </Link>
         <Link
-          to="/reviews"
+          to="/Reviews"
           className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100"
         >
           <SchoolIcon className="mr-3" />
@@ -71,7 +71,7 @@ const SideBar = () => {
           to="/AvailabilityChecker"
           className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100"
         >
-           <MedicalServicesIcon className="mr-3" />
+          <MedicalServicesIcon className="mr-3" />
           AvailabilityChecker
         </Link>
         <Link

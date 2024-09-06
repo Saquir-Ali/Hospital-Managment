@@ -12,7 +12,7 @@ import BloodAvailabilityChecker from "./Component/BloodAvailabilityChecker";
 import AvailabilityChecker from "./Component/AvailabilityChecker";
 import Doctors from "./Component/Doctors";
 import Messages from "./Component/Messages";
-import { Reviews } from "@mui/icons-material";
+import Reviews from "./Component/Reviews";
 
 const BodyStructure = () => (
   <>

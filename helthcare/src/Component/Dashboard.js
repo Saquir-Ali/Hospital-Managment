@@ -130,25 +130,29 @@ const Dashboard = () => {
                     <td className="py-2">{appointment.date}</td>
 
                     {/* Patient Column */}
-                    <td className="py-2 flex items-center ">
-                      <Avatar
-                        className="mr-2"
-                        src={appointment.patientAvatar}
-                        alt={appointment.patientName}
-                        sx={{ width: 30, height: 30 }} // Smaller avatar size
-                      />
-                      <span>{appointment.patientName}</span>
+                    <td className="py-2">
+                      <div className="flex items-center">
+                        <Avatar
+                          className="mr-2"
+                          src={appointment.patientAvatar}
+                          alt={appointment.patientName}
+                          sx={{ width: 30, height: 30 }} // Smaller avatar size
+                        />
+                        <span>{appointment.patientName}</span>
+                      </div>
                     </td>
 
                     {/* Doctor Column */}
-                    <td className="py-2 flex items-center ">
-                      <Avatar
-                        className="mr-2"
-                        src={appointment.doctorAvatar}
-                        alt={appointment.doctorName}
-                        sx={{ width: 30, height: 30 }} // Smaller avatar size
-                      />
-                      <span>{appointment.doctorName}</span>
+                    <td className="py-2">
+                      <div className="flex items-center">
+                        <Avatar
+                          className="mr-2"
+                          src={appointment.doctorAvatar}
+                          alt={appointment.doctorName}
+                          sx={{ width: 30, height: 30 }} // Smaller avatar size
+                        />
+                        <span>{appointment.doctorName}</span>
+                      </div>
                     </td>
                   </tr>
                 ))}
