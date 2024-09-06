@@ -52,11 +52,11 @@ const SideBar = () => {
           Messages
         </Link>
         <Link
-          to="/education-content"
+          to="/reviews"
           className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100"
         >
           <SchoolIcon className="mr-3" />
-          Education Content
+          Reviews Content
         </Link>
         <Link
           to="/medicine-inventory"

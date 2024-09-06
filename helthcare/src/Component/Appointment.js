@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { Link, Outlet } from "react-router-dom";
+import Header from "./Header";
 
 const appointments = [
   {
@@ -76,29 +77,32 @@ const appointments = [
 
 const Appointment = () => {
   return (
-    <Paper style={{ padding: "20px", marginTop: "20px" }}>
-      <div className="flex px-2 gap-4">
-        <Link to="/Appointments">
-          <Typography
-            className="  px-4 bg-gray-200 rounded-2xl"
-            variant="h6"
-            gutterBottom
-          >
-            New Appointments
-          </Typography>
-        </Link>
-        <Link to="/Appointments/completed">
-          <Typography
-            className="ml-4 px-4 bg-gray-200 rounded-2xl "
-            variant="h6"
-            gutterBottom
-          >
-            Completed Appointments
-          </Typography>
-        </Link>
-      </div>
-      <Outlet />
-    </Paper>
+    <>
+      <Header param="Appointments" />
+      <Paper style={{ padding: "20px", marginTop: "20px" }}>
+        <div className="flex px-2 gap-4">
+          <Link to="/Appointments">
+            <Typography
+              className="  px-4 bg-gray-200 rounded-2xl"
+              variant="h6"
+              gutterBottom
+            >
+              New Appointments
+            </Typography>
+          </Link>
+          <Link to="/Appointments/completed">
+            <Typography
+              className="ml-4 px-4 bg-gray-200 rounded-2xl "
+              variant="h6"
+              gutterBottom
+            >
+              Completed Appointments
+            </Typography>
+          </Link>
+        </div>
+        <Outlet />
+      </Paper>
+    </>
   );
 };
 

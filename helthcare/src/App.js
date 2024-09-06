@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import SideBar from "./Component/SideBar";
 import Dashboard from "./Component/Dashboard";
@@ -6,7 +6,10 @@ import Appointment from "./Component/Appointment";
 import Header from "./Component/Header";
 import NewAppointments from "./Component/NewAppointments";
 import CompletedAppointments from "./Component/CompletedAppointments";
-import Patients from "./Component/Patients"; // Import the Patients component
+import Patients from "./Component/Patients";
+import Messages from "./Component/Messages";
+import Reviews from "./Component/Reviews";
+import Doctors from "./Component/Doctors"; // Import the Doctors component
 
 const BodyStructure = () => (
   <>
@@ -15,7 +18,6 @@ const BodyStructure = () => (
         <SideBar />
       </div>
       <main className="ml-64 flex-1 overflow-auto p-6">
-        <Header />
         <Outlet />
       </main>
     </div>
@@ -32,24 +34,35 @@ const appRouter = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/Appointments",
+        path: "/appointments",
         element: <Appointment />,
         children: [
           {
-            path: "/Appointments",
+            path: "/appointments",
             element: <NewAppointments />,
           },
           {
-            path: "/Appointments/completed",
+            path: "/appointments/completed",
             element: <CompletedAppointments />,
           },
         ],
       },
       {
-        path: "/Patients",
+        path: "/patients",
         element: <Patients />,
       },
-      {},
+      {
+        path: "/messages",
+        element: <Messages />,
+      },
+      {
+        path: "/reviews",
+        element: <Reviews />,
+      },
+      {
+        path: "/doctors", // New route for Doctors page
+        element: <Doctors />, // Render the Doctors component
+      },
     ],
   },
 ]);
