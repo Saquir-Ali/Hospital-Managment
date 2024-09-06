@@ -8,6 +8,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import SchoolIcon from "@mui/icons-material/School";
 import LocalPharmacyIcon from "@mui/icons-material/LocalPharmacy";
 import SettingsIcon from "@mui/icons-material/Settings";
+import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 
 const SideBar = () => {
   return (
@@ -64,6 +65,14 @@ const SideBar = () => {
         >
           <LocalPharmacyIcon className="mr-3" />
           Medicine Inventory
+        </Link>
+
+        <Link
+          to="/AvailabilityChecker"
+          className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-blue-100"
+        >
+           <MedicalServicesIcon className="mr-3" />
+          AvailabilityChecker
         </Link>
         <Link
           to="/settings"

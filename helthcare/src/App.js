@@ -8,6 +8,8 @@ import NewAppointments from "./Component/NewAppointments";
 import CompletedAppointments from "./Component/CompletedAppointments";
 import Patients from "./Component/Patients"; // Import the Patients component
 import MedicinalInventory from "./Component/MedicinalInventory";
+import BloodAvailabilityChecker from "./Component/BloodAvailabilityChecker";
+import AvailabilityChecker from "./Component/AvailabilityChecker";
 
 const BodyStructure = () => (
   <>
@@ -51,9 +53,17 @@ const appRouter = createBrowserRouter([
         element: <Patients />,
       },
       {
-        path:"/medicine-inventory",
-        element:<MedicinalInventory/>
+        path: "/medicine-inventory",
+        element: <MedicinalInventory />
       },
+      {
+        path: "AvailabilityChecker",
+        element: <AvailabilityChecker />
+      },
+      {
+        path: "/AvailabilityChecker/BloodAvailabilityChecker",
+        element: <BloodAvailabilityChecker />
+      }
     ],
   },
 ]);
