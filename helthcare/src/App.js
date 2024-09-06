@@ -1,28 +1,28 @@
-import React, { useEffect } from 'react'
-import { createBrowserRouter, Outlet } from 'react-router-dom'
-import SideBar from './Component/SideBar'
-import Dashboard from './Component/Dashboard'
-import Appointment from './Component/Appointment'
-import Header from './Component/Header'
-import NewAppointments from './Component/NewAppointments'
-import CompletedAppointments from './Component/CompletedAppointments'
+import React, { useEffect } from "react";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import SideBar from "./Component/SideBar";
+import Dashboard from "./Component/Dashboard";
+import Appointment from "./Component/Appointment";
+import Header from "./Component/Header";
+import NewAppointments from "./Component/NewAppointments";
+import CompletedAppointments from "./Component/CompletedAppointments";
+import Patients from "./Component/Patients"; // Import the Patients component
 
 const BodyStructure = () => (
   <>
     <div className="min-h-screen bg-gray-100 flex">
       <SideBar />
       <main className="flex-1 p-6">
-        <Header/>
+        <Header />
         <Outlet />
       </main>
     </div>
   </>
-)
-
+);
 
 const appRouter = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <BodyStructure />,
     children: [
       {
@@ -30,23 +30,25 @@ const appRouter = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/Appointments',
+        path: "/Appointments",
         element: <Appointment />,
-        children:[
+        children: [
           {
-            path:'/Appointments',
-            element:<NewAppointments/>
-
+            path: "/Appointments",
+            element: <NewAppointments />,
           },
           {
-            path:'/Appointments/completed',
-            element:<CompletedAppointments/>
-
-          }
-        ]
-      }
-    ]
-  }
-])
+            path: "/Appointments/completed",
+            element: <CompletedAppointments />,
+          },
+        ],
+      },
+      {
+        path: "/Patients",
+        element: <Patients />,
+      },
+    ],
+  },
+]);
 
 export default appRouter;

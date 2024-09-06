@@ -8,7 +8,7 @@ import labTestsIcon from "../Images/labTestsIcon.png";
 
 const Dashboard = () => {
   return (
-    <main className="flex-1 bg-gray-100">
+    <main className="flex-1 bg-gray-100 overflow-y-scroll relative">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Activity Overview Section */}
         <div className="bg-white rounded-lg shadow p-4 col-span-1 md:col-span-1">
@@ -16,15 +16,16 @@ const Dashboard = () => {
             <h4 className="text-xl font-bold">Activity Overview</h4>
             <div className="text-gray-500 cursor-pointer">Weekly ▼</div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <div className="bg-blue-100 p-4 rounded flex flex-col items-center">
               <img
                 src={appointmentsIcon}
                 alt="Appointments"
                 className="w-8 h-8 mb-2"
               />
+              <h3 className="text-lg text-center font-semibold">100</h3>
               <h3 className="text-lg text-center font-semibold">
-                100 Appointments
+                Appointments
               </h3>
             </div>
             <div className="bg-green-100 p-4 rounded flex flex-col items-center">
@@ -138,9 +139,9 @@ const Dashboard = () => {
 
         {/* Patient Fee Section */}
         <div className="bg-white p-20 rounded-lg shadow col-span-1">
-          <h4 className="text-xl text-center font-bold mb-4">
-            Section To Be Decided Later...
-          </h4>
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-xl font-bold">Emergency</h4>
+          </div>
         </div>
       </section>
     </main>
