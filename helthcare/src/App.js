@@ -11,8 +11,10 @@ import Patients from "./Component/Patients"; // Import the Patients component
 const BodyStructure = () => (
   <>
     <div className="min-h-screen bg-gray-100 flex">
-      <SideBar />
-      <main className="flex-1 p-6">
+      <div className="fixed top-0 left-0 h-full w-64 bg-white">
+        <SideBar />
+      </div>
+      <main className="ml-64 flex-1 overflow-auto p-6">
         <Header />
         <Outlet />
       </main>
@@ -47,6 +49,7 @@ const appRouter = createBrowserRouter([
         path: "/Patients",
         element: <Patients />,
       },
+      {},
     ],
   },
 ]);

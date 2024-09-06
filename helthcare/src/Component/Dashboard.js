@@ -8,7 +8,7 @@ import labTestsIcon from "../Images/labTestsIcon.png";
 
 const Dashboard = () => {
   return (
-    <main className="flex-1 bg-gray-100 overflow-y-scroll relative">
+    <main className="flex-1 bg-gray-100">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Activity Overview Section */}
         <div className="bg-white rounded-lg shadow p-4 col-span-1 md:col-span-1">
@@ -137,10 +137,30 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Patient Fee Section */}
-        <div className="bg-white p-20 rounded-lg shadow col-span-1">
+        {/*Emergency Section */}
+        {/* Emergency Section */}
+        <div className="bg-white p-4 rounded-lg shadow col-span-1">
           <div className="flex justify-between items-center mb-4">
             <h4 className="text-xl font-bold">Emergency</h4>
+            <button className="bg-red-500 text-white px-4 py-2 rounded-md shadow">
+              View Details
+            </button>
+          </div>
+
+          {/* Example content */}
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">Current Emergency Patients</span>
+              <span className="text-xl font-bold">12</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">Available Ambulances</span>
+              <span className="text-xl font-bold">3</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">Doctors on Call</span>
+              <span className="text-xl font-bold">5</span>
+            </div>
           </div>
         </div>
       </section>
