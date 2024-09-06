@@ -6,10 +6,7 @@ import Appointment from "./Component/Appointment";
 import Header from "./Component/Header";
 import NewAppointments from "./Component/NewAppointments";
 import CompletedAppointments from "./Component/CompletedAppointments";
-import Patients from "./Component/Patients";
-import Messages from "./Component/Messages";
-import Reviews from "./Component/Reviews";
-import Doctors from "./Component/Doctors"; // Import the Doctors component
+import Patients from "./Component/Patients"; // Import the Patients component
 
 const BodyStructure = () => (
   <>
@@ -51,18 +48,7 @@ const appRouter = createBrowserRouter([
         path: "/patients",
         element: <Patients />,
       },
-      {
-        path: "/messages",
-        element: <Messages />,
-      },
-      {
-        path: "/reviews",
-        element: <Reviews />,
-      },
-      {
-        path: "/doctors", // New route for Doctors page
-        element: <Doctors />, // Render the Doctors component
-      },
+      {},
     ],
   },
 ]);
