@@ -5,16 +5,10 @@ import appointmentsIcon from "../Images/appointmentsIcon.png"; // Adjust path as
 import patientsIcon from "../Images/patientsIcon.png";
 import medicinesIcon from "../Images/medicinesIcon.png";
 import labTestsIcon from "../Images/labTestsIcon.png";
-<<<<<<< HEAD
-import Header from "./Header";
-
-=======
 import EmergancySection from "./EmergancySection";
 import Avatar from "@mui/material/Avatar";
->>>>>>> 11c8f910a51395f5df2dde6c635837e630ac18ee
+import Header from "./Header";
 const Dashboard = () => {
-
-
   // Mock data for appointments with random avatar URLs
   const appointments = [
     {
@@ -52,7 +46,8 @@ const Dashboard = () => {
   ];
 
   // Renamed state variable to avoid conflict
-  const [isEmergencySectionVisible, setIsEmergencySectionVisible] = useState(false);
+  const [isEmergencySectionVisible, setIsEmergencySectionVisible] =
+    useState(false);
 
   const EmergancySectionHandler = () => {
     setIsEmergencySectionVisible(!isEmergencySectionVisible);
@@ -62,8 +57,6 @@ const Dashboard = () => {
   return (
     <>
       <Header param="Dashboard" />
-
-<<<<<<< HEAD
       <main className="flex-1 bg-gray-100">
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Activity Overview Section */}
@@ -71,69 +64,6 @@ const Dashboard = () => {
             <div className="flex justify-between items-center mb-4">
               <h4 className="text-xl font-bold">Activity Overview</h4>
               <div className="text-gray-500 cursor-pointer">Weekly ▼</div>
-=======
-        {/* New Appointments Section */}
-        <div className="col-span-1 md:col-span-2 bg-white p-4 rounded-lg shadow">
-          <h4 className="text-xl font-bold mb-4">New Appointments</h4>
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b">
-                <th className="py-2">Time</th>
-                <th className="py-2">Date</th>
-                <th className="py-2">Patient Name</th>
-                <th className="py-2">Doctor</th>
-              </tr>
-            </thead>
-            <tbody>
-              {appointments.map((appointment, index) => (
-                <tr key={index} className="border-b">
-                  <td className="py-2">{appointment.time}</td>
-                  <td className="py-2">{appointment.date}</td>
-
-                  {/* Patient Column */}
-                  <td className="py-2 flex items-center ">
-                    <Avatar
-                      className="mr-2"
-                      src={appointment.patientAvatar}
-                      alt={appointment.patientName}
-                      sx={{ width: 30, height: 30 }} // Smaller avatar size
-                    />
-                    <span>{appointment.patientName}</span>
-                  </td>
-
-                  {/* Doctor Column */}
-                  <td className="py-2 flex items-center ">
-                    <Avatar
-                      className="mr-2"
-                      src={appointment.doctorAvatar}
-                      alt={appointment.doctorName}
-                      sx={{ width: 30, height: 30 }} // Smaller avatar size
-                    />
-                    <span>{appointment.doctorName}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-        </div>
-      </section>
-
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-        {/* Real Time data of patients Section */}
-        <div className="bg-white p-4 rounded-lg shadow col-span-1">
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xl font-bold">Patients</h4>
-            <div className="text-gray-500 cursor-pointer">Weekly ▼</div>
-          </div>
-          <div className="mb-6">
-            <CustomChart />
-          </div>
-          <div className="flex justify-between text-gray-700">
-            <div className="text-center">
-              <p className="text-s">All time</p>
-              <p className="text-lg font-semibold">41,234</p>
->>>>>>> 11c8f910a51395f5df2dde6c635837e630ac18ee
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-blue-100 p-4 rounded flex flex-col items-center">
@@ -179,37 +109,6 @@ const Dashboard = () => {
                 <h3 className="text-lg text-center font-semibold">Lab Tests</h3>
               </div>
             </div>
-<<<<<<< HEAD
-=======
-            <div className="text-center">
-              <p className="text-s">7 days</p>
-              <p className="text-lg font-semibold">41,234</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Top Medicines Sold Section */}
-        <div className="bg-white p-4 rounded-lg shadow col-span-1">
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xl font-bold">Top Medicine Sold</h4>
-            <div className="text-gray-500 cursor-pointer">Weekly ▼</div>
-          </div>
-          <div className="text-sm">
-            <DemographicsChart />
-          </div>
-        </div>
-
-        {/*Emergency Section */}
-        <div className="bg-white p-4 rounded-lg shadow col-span-1">
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xl font-bold">Emergency</h4>
-            <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md shadow"
-              onClick={EmergancySectionHandler}
-            >
-              View Details
-            </button>
->>>>>>> 11c8f910a51395f5df2dde6c635837e630ac18ee
           </div>
 
           {/* New Appointments Section */}
@@ -225,37 +124,41 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="py-2">9:30 AM</td>
-                  <td className="py-2">05/12/2022</td>
-                  <td className="py-2">Elizabeth Polson</td>
-                  <td className="py-2">Dr. John</td>
-                </tr>
-                <tr>
-                  <td className="py-2">10:30 AM</td>
-                  <td className="py-2">05/12/2022</td>
-                  <td className="py-2">John David</td>
-                  <td className="py-2">Dr. Joel</td>
-                </tr>
-                <tr>
-                  <td className="py-2">11:00 AM</td>
-                  <td className="py-2">05/12/2022</td>
-                  <td className="py-2">Krishtav Rajan</td>
-                  <td className="py-2">Dr. Joel</td>
-                </tr>
-                <tr>
-                  <td className="py-2">11:30 AM</td>
-                  <td className="py-2">05/12/2022</td>
-                  <td className="py-2">EG Subramani</td>
-                  <td className="py-2">Dr. John</td>
-                </tr>
+                {appointments.map((appointment, index) => (
+                  <tr key={index} className="border-b">
+                    <td className="py-2">{appointment.time}</td>
+                    <td className="py-2">{appointment.date}</td>
+
+                    {/* Patient Column */}
+                    <td className="py-2 flex items-center ">
+                      <Avatar
+                        className="mr-2"
+                        src={appointment.patientAvatar}
+                        alt={appointment.patientName}
+                        sx={{ width: 30, height: 30 }} // Smaller avatar size
+                      />
+                      <span>{appointment.patientName}</span>
+                    </td>
+
+                    {/* Doctor Column */}
+                    <td className="py-2 flex items-center ">
+                      <Avatar
+                        className="mr-2"
+                        src={appointment.doctorAvatar}
+                        alt={appointment.doctorName}
+                        sx={{ width: 30, height: 30 }} // Smaller avatar size
+                      />
+                      <span>{appointment.doctorName}</span>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-          {/* Real Time data of pateints Section */}
+          {/* Real Time data of patients Section */}
           <div className="bg-white p-4 rounded-lg shadow col-span-1">
             <div className="flex justify-between items-center mb-4">
               <h4 className="text-xl font-bold">Patients</h4>
@@ -279,7 +182,6 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
 
           {/* Top Medicines Sold Section */}
           <div className="bg-white p-4 rounded-lg shadow col-span-1">
@@ -293,11 +195,13 @@ const Dashboard = () => {
           </div>
 
           {/*Emergency Section */}
-          {/* Emergency Section */}
           <div className="bg-white p-4 rounded-lg shadow col-span-1">
             <div className="flex justify-between items-center mb-4">
               <h4 className="text-xl font-bold">Emergency</h4>
-              <button className="bg-red-500 text-white px-4 py-2 rounded-md shadow">
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded-md shadow"
+                onClick={EmergancySectionHandler}
+              >
                 View Details
               </button>
             </div>
@@ -321,16 +225,13 @@ const Dashboard = () => {
             </div>
           </div>
         </section>
+
+        {/* Conditional rendering of the Emergency Section */}
+        {isEmergencySectionVisible && (
+          <EmergancySection EmergancySectionHandler={EmergancySectionHandler} />
+        )}
       </main>
     </>
-=======
-        </div>
-      </section>
-
-      {/* Conditional rendering of the Emergency Section */}
-      {isEmergencySectionVisible && <EmergancySection EmergancySectionHandler={EmergancySectionHandler} />}
-    </main>
->>>>>>> 11c8f910a51395f5df2dde6c635837e630ac18ee
   );
 };
 

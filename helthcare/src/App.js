@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import SideBar from "./Component/SideBar";
 import Dashboard from "./Component/Dashboard";
@@ -7,6 +7,12 @@ import Header from "./Component/Header";
 import NewAppointments from "./Component/NewAppointments";
 import CompletedAppointments from "./Component/CompletedAppointments";
 import Patients from "./Component/Patients"; // Import the Patients component
+import MedicinalInventory from "./Component/MedicinalInventory";
+import BloodAvailabilityChecker from "./Component/BloodAvailabilityChecker";
+import AvailabilityChecker from "./Component/AvailabilityChecker";
+import Doctors from "./Component/Doctors";
+import Messages from "./Component/Messages";
+import { Reviews } from "@mui/icons-material";
 
 const BodyStructure = () => (
   <>
@@ -31,24 +37,47 @@ const appRouter = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/appointments",
+        path: "/Appointments",
         element: <Appointment />,
         children: [
           {
-            path: "/appointments",
+            path: "/Appointments",
             element: <NewAppointments />,
           },
           {
-            path: "/appointments/completed",
+            path: "/Appointments/completed",
             element: <CompletedAppointments />,
           },
         ],
       },
       {
-        path: "/patients",
+        path: "/Doctors",
+        element: <Doctors />,
+      },
+      {
+        path: "/Messages",
+        element: <Messages />,
+      },
+      {
+        path: "/Patients",
         element: <Patients />,
       },
-      {},
+      {
+        path: "/medicine-inventory",
+        element: <MedicinalInventory />,
+      },
+      {
+        path: "/Reviews",
+        element: <Reviews />,
+      },
+      {
+        path: "AvailabilityChecker",
+        element: <AvailabilityChecker />,
+      },
+      {
+        path: "/AvailabilityChecker/BloodAvailabilityChecker",
+        element: <BloodAvailabilityChecker />,
+      },
     ],
   },
 ]);
