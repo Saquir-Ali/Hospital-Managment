@@ -1,12 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import DemographicsChart from "./DemographicsChart";
 import CustomChart from "./CustomChart";
 import appointmentsIcon from "../Images/appointmentsIcon.png"; // Adjust path as necessary
 import patientsIcon from "../Images/patientsIcon.png";
 import medicinesIcon from "../Images/medicinesIcon.png";
 import labTestsIcon from "../Images/labTestsIcon.png";
-
+import EmergancySection from "./EmergancySection";
+import Avatar from "@mui/material/Avatar";
 const Dashboard = () => {
+
+
+  // Mock data for appointments with random avatar URLs
+  const appointments = [
+    {
+      time: "9:30 AM",
+      date: "05/12/2022",
+      patientName: "Elizabeth Polson",
+      patientAvatar: "https://i.pravatar.cc/50?img=1", // Random avatar
+      doctorName: "Dr. John",
+      doctorAvatar: "https://i.pravatar.cc/50?img=2",
+    },
+    {
+      time: "10:30 AM",
+      date: "05/12/2022",
+      patientName: "John David",
+      patientAvatar: "https://i.pravatar.cc/50?img=3",
+      doctorName: "Dr. Joel",
+      doctorAvatar: "https://i.pravatar.cc/50?img=4",
+    },
+    {
+      time: "11:00 AM",
+      date: "05/12/2022",
+      patientName: "Krishtav Rajan",
+      patientAvatar: "https://i.pravatar.cc/50?img=5",
+      doctorName: "Dr. Joel",
+      doctorAvatar: "https://i.pravatar.cc/50?img=6",
+    },
+    {
+      time: "11:30 AM",
+      date: "05/12/2022",
+      patientName: "EG Subramani",
+      patientAvatar: "https://i.pravatar.cc/50?img=7",
+      doctorName: "Dr. John",
+      doctorAvatar: "https://i.pravatar.cc/50?img=8",
+    },
+  ];
+
+  // Renamed state variable to avoid conflict
+  const [isEmergencySectionVisible, setIsEmergencySectionVisible] = useState(false);
+
+  const EmergancySectionHandler = () => {
+    setIsEmergencySectionVisible(!isEmergencySectionVisible);
+    console.log(isEmergencySectionVisible);
+  };
+
   return (
     <main className="flex-1 bg-gray-100">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -71,37 +118,42 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="py-2">9:30 AM</td>
-                <td className="py-2">05/12/2022</td>
-                <td className="py-2">Elizabeth Polson</td>
-                <td className="py-2">Dr. John</td>
-              </tr>
-              <tr>
-                <td className="py-2">10:30 AM</td>
-                <td className="py-2">05/12/2022</td>
-                <td className="py-2">John David</td>
-                <td className="py-2">Dr. Joel</td>
-              </tr>
-              <tr>
-                <td className="py-2">11:00 AM</td>
-                <td className="py-2">05/12/2022</td>
-                <td className="py-2">Krishtav Rajan</td>
-                <td className="py-2">Dr. Joel</td>
-              </tr>
-              <tr>
-                <td className="py-2">11:30 AM</td>
-                <td className="py-2">05/12/2022</td>
-                <td className="py-2">EG Subramani</td>
-                <td className="py-2">Dr. John</td>
-              </tr>
+              {appointments.map((appointment, index) => (
+                <tr key={index} className="border-b">
+                  <td className="py-2">{appointment.time}</td>
+                  <td className="py-2">{appointment.date}</td>
+
+                  {/* Patient Column */}
+                  <td className="py-2 flex items-center ">
+                    <Avatar
+                      className="mr-2"
+                      src={appointment.patientAvatar}
+                      alt={appointment.patientName}
+                      sx={{ width: 30, height: 30 }} // Smaller avatar size
+                    />
+                    <span>{appointment.patientName}</span>
+                  </td>
+
+                  {/* Doctor Column */}
+                  <td className="py-2 flex items-center ">
+                    <Avatar
+                      className="mr-2"
+                      src={appointment.doctorAvatar}
+                      alt={appointment.doctorName}
+                      sx={{ width: 30, height: 30 }} // Smaller avatar size
+                    />
+                    <span>{appointment.doctorName}</span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+
         </div>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-        {/* Real Time data of pateints Section */}
+        {/* Real Time data of patients Section */}
         <div className="bg-white p-4 rounded-lg shadow col-span-1">
           <div className="flex justify-between items-center mb-4">
             <h4 className="text-xl font-bold">Patients</h4>
@@ -138,11 +190,13 @@ const Dashboard = () => {
         </div>
 
         {/*Emergency Section */}
-        {/* Emergency Section */}
         <div className="bg-white p-4 rounded-lg shadow col-span-1">
           <div className="flex justify-between items-center mb-4">
             <h4 className="text-xl font-bold">Emergency</h4>
-            <button className="bg-red-500 text-white px-4 py-2 rounded-md shadow">
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-md shadow"
+              onClick={EmergancySectionHandler}
+            >
               View Details
             </button>
           </div>
@@ -164,6 +218,9 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+
+      {/* Conditional rendering of the Emergency Section */}
+      {isEmergencySectionVisible && <EmergancySection EmergancySectionHandler={EmergancySectionHandler} />}
     </main>
   );
 };
