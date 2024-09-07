@@ -13,6 +13,9 @@ import AvailabilityChecker from "./Component/AvailabilityChecker";
 import Doctors from "./Component/Doctors";
 import Messages from "./Component/Messages";
 import Reviews from "./Component/Reviews";
+import MedicineAvailabilityChecker from "./Component/MedicineAvailabilityChecker";
+import SuppliesAvailabilityChecker from "./Component/GeneralMedicalSupplierChecker";
+import HospitalList from "./Component/HospitalList";
 
 const BodyStructure = () => (
   <>
@@ -78,6 +81,19 @@ const appRouter = createBrowserRouter([
         path: "/AvailabilityChecker/BloodAvailabilityChecker",
         element: <BloodAvailabilityChecker />,
       },
+      {
+        path: "/AvailabilityChecker/MedicineAvailabilityChecker",
+        element: <MedicineAvailabilityChecker />,
+      },
+      {
+        path: "/AvailabilityChecker/GeneralMedicalSupplierChecker",
+        element: <SuppliesAvailabilityChecker/>,
+      },
+      {
+        path: "/AvailabilityChecker/HospitalList",
+        element: <HospitalList/>,
+      },
+      
     ],
   },
 ]);
